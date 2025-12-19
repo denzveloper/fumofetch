@@ -53,7 +53,8 @@ const char* get_machine_name() {
 const char* get_kernel() {
 	static struct utsname kernel;
 	uname(&kernel);
-	return kernel.release;
+	snprintf(buffer, BUFFER_SIZE, "%s v%s", kernel.sysname, kernel.release);
+	return buffer;
 }
 
 const char* get_uptime() {
